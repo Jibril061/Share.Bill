@@ -1,3 +1,55 @@
+.site-header {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header-container {
+  width: min(calc(100% - 32px), 960px);
+  min-height: 72px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  color: #121826;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.site-header nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-link {
+  color: #4b5563;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.nav-link.active {
+  color: #059669;
+  font-weight: 700;
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    gap: 12px;
+  }
+
+  .site-header nav {
+    gap: 12px;
+  }
+
+  .brand {
+    font-size: 18px;
+  }
+}
+
 #root {
   min-height: 100vh;
 }
