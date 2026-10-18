@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Laporan Audit Performa AP1 Tugas 5c — Share.Bill (Kelompok QWERTY)</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 11mm 12mm 11mm 12mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #1f2937;
+      background-color: #ffffff;
+      line-height: 1.38;
+      font-size: 8.7pt;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Cover / Header section */
+    .cover-card {
+      background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+      border: 1.5px solid #d1fae5;
+      border-radius: 9px;
+      padding: 13px 18px;
+      margin-bottom: 11px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .cover-badge {
+      display: inline-block;
+      background-color: #059669;
+      color: #ffffff;
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      margin-bottom: 4px;
+    }
+
+    .cover-title {
+      font-size: 16pt;
+      font-weight: 800;
+      color: #064e3b;
+      line-height: 1.2;
+      margin-bottom: 3px;
+    }
+
+    .cover-subtitle {
+      font-size: 9pt;
+      color: #047857;
+      font-weight: 500;
+      margin-bottom: 7px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 125px 1fr;
+      row-gap: 3px;
+      column-gap: 10px;
+      font-size: 8.2pt;
+      border-top: 1px solid #a7f3d0;
+      padding-top: 6px;
+    }
+
+    .meta-label {
+      color: #065f46;
+      font-weight: 600;
+    }
+
+    .meta-value {
+      color: #111827;
+    }
+
+    .meta-value a {
+      color: #059669;
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    /* Section Styling */
+    h2 {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #064e3b;
+      border-bottom: 1.5px solid #059669;
+      padding-bottom: 2px;
+      margin-top: 9px;
+      margin-bottom: 4px;
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    h3 {
+      font-size: 8.8pt;
+      font-weight: 700;
+      color: #111827;
+      margin-top: 6px;
+      margin-bottom: 3px;
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    h4 {
+      font-size: 8.3pt;
+      font-weight: 700;
+      color: #065f46;
+      margin-top: 4px;
+      margin-bottom: 2px;
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    p {
+      margin-bottom: 4px;
+      text-align: justify;
+    }
+
+    ul, ol {
+      margin-left: 15px;
+      margin-bottom: 4px;
+    }
+
+    li {
+      margin-bottom: 1.5px;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 3px;
+      margin-bottom: 7px;
+      font-size: 7.6pt;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    th, td {
+      border: 1px solid #d1d5db;
+      padding: 3px 5px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    th {
+      background-color: #065f46;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 7.3pt;
+      letter-spacing: 0.02em;
+    }
+
+    tr:nth-child(even) td {
+      background-color: #f9fafb;
+    }
+
+    td.center, th.center {
+      text-align: center;
+    }
+
+    td.right, th.right {
+      text-align: right;
+    }
+
+    /* Badges in tables */
+    .badge {
+      display: inline-block;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 6.8pt;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .badge-green {
+      background-color: #d1fae5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+
+    .badge-teal {
+      background-color: #ccfbf1;
+      color: #0f766e;
+      border: 1px solid #99f6e4;
+    }
+
+    /* Callout Box */
+    .callout {
+      background-color: #f8fafc;
+      border-left: 3px solid #059669;
+      border-radius: 0 5px 5px 0;
+      padding: 5px 8px;
+      margin-top: 4px;
+      margin-bottom: 6px;
+      font-size: 7.8pt;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .callout-title {
+      font-weight: 700;
+      color: #064e3b;
+      margin-bottom: 2px;
+    }
+
+    /* Figures / Screenshots */
+    .screenshot-figure {
+      margin: 5px auto;
+      text-align: center;
+      page-break-inside: avoid;
+      break-inside: avoid;
+      max-width: 100%;
+    }
+
+    .screenshot-figure img {
+      max-width: 63%;
+      height: auto;
+      border-radius: 5px;
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .screenshot-caption {
+      font-size: 7pt;
+      color: #4b5563;
+      margin-top: 2px;
+      font-style: italic;
+    }
+
+    code {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 7.3pt;
+      background-color: #f3f4f6;
+      padding: 1px 3px;
+      border-radius: 2px;
+      color: #065f46;
+    }
+
+    .section-page-break {
+      break-before: page;
+      page-break-before: always;
+    }
+
+    .footer-note {
+      font-size: 6.8pt;
+      color: #6b7280;
+      margin-top: -3px;
+      margin-bottom: 6px;
+      line-height: 1.25;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cover Header -->
+  <div class="cover-card">
+    <div class="cover-badge">Application Project 1 (AP1) — Tugas 5c</div>
+    <div class="cover-title">Performance Audit Report</div>
+    <div class="cover-subtitle">Evaluasi Dampak Teknis PWA dan Reusable Components terhadap Kinerja Aplikasi Share.Bill</div>
+    
+    <div class="meta-grid">
+      <div class="meta-label">Nama Proyek:</div>
+      <div class="meta-value"><strong>Share.Bill</strong> (Aplikasi Pembagian Tagihan Berdasarkan Pesanan)</div>
+
+      <div class="meta-label">Kelompok:</div>
+      <div class="meta-value"><strong>QWERTY</strong></div>
+
+      <div class="meta-label">Anggota Kelompok:</div>
+      <div class="meta-value">
+        1. <strong>Mukhamad Jibril Hidayatullah</strong> &nbsp;|&nbsp; 
+        2. <strong>Daffa Muhamad Ramadhan</strong> &nbsp;|&nbsp; 
+        3. <strong>Marchel Yohannes Sihombing</strong>
+      </div>
+
+      <div class="meta-label">Stack Teknologi:</div>
+      <div class="meta-value">React 19, TypeScript, Vite 8, React Router 8, PWA (Service Worker & Manifest)</div>
+
+      <div class="meta-label">Repository GitHub:</div>
+      <div class="meta-value"><a href="https://github.com/Jibril061/Share.Bill">https://github.com/Jibril061/Share.Bill</a></div>
+
+      <div class="meta-label">Tahun Akademik:</div>
+      <div class="meta-value">Semester 3 — Program Studi Informatika / Ilmu Komputer (T.A. 2026/2027)</div>
+    </div>
+  </div>
+
+  <!-- Section 1 -->
+  <h2>1. Pendahuluan dan Tujuan Audit</h2>
+  <p>
+    Pengembangan aplikasi berbasis web skala modern menuntut keseimbangan antara penambahan fungsionalitas dan pemeliharaan kinerja aplikasi yang cepat serta responsif. Pada tahapan sebelumnya, Kelompok QWERTY telah menyelesaikan implementasi <strong>PWA minimal (Tugas 5a)</strong> yang mencakup web app manifest, ikon adaptif, service worker untuk offline fallback, dan strategi cache aset, serta implementasi <strong>Component Library (Tugas 5b)</strong> yang merombak antarmuka menggunakan komponen reusable berstandar aksesibilitas (<code>Button</code>, <code>Card</code>, dan <code>FormField</code>).
+  </p>
+  <p>
+    Tujuan dari audit performa ini adalah untuk mengukur secara obyektif dampak teknis dari kedua implementasi tersebut terhadap metrik kunci kinerja web yang diakui secara global (Google Web Vitals), menganalisis perubahan ukuran berkas bundel (<em>bundle size</em>), memvalidasi kepatuhan aksesibilitas web (WAI-ARIA), serta mendokumentasikan hasil pengujian secara transparan berbasis berkas data hasil audit riil.
+  </p>
+
+  <!-- Section 2 -->
+  <h2>2. Metodologi dan Kondisi Lingkungan Pengujian</h2>
+  <p>
+    Pengujian dilakukan pada build produksi aplikasi menggunakan protokol pengujian otomatis Google Lighthouse CLI yang dijalankan di atas server lokal produksi:
+  </p>
+  <ul>
+    <li><strong>Perintah Kompilasi Build:</strong> <code>npm run build</code> (menjalankan <code>tsc -b && vite build</code>) — selesai dalam waktu 545 ms.</li>
+    <li><strong>Server Audit:</strong> <code>npm run preview</code> (server <code>vite preview</code>) pada URL target <code>http://localhost:4173/</code>.</li>
+    <li><strong>Alat Audit Resmi:</strong> Google Lighthouse CLI versi <code>13.5.0</code> (didukung engine aksesibilitas <code>axe-core 4.14.0</code>).</li>
+    <li><strong>Mesin Browser:</strong> Google Chrome Headless versi <code>155.0.0.0</code> pada sistem operasi 64-bit Windows.</li>
+    <li><strong>Profil Emulasi Perangkat:</strong> Mobile (Moto G Power 2022, dimensi viewport 412 × 823 piksel, rasio piksel perangkat / DPR 1.75).</li>
+    <li><strong>Metode Simulasi (Throttling):</strong> Simulasi baku Lighthouse (<em>Lantern Simulation</em>) dengan pelambatan CPU 4× (<em>CPU slowdown multiplier</em>), latensi jaringan RTT 150 ms, dan throughput unduh 1.638,4 Kbps (~1,6 Mbps).</li>
+    <li><strong>Waktu Pengujian Riil:</strong>
+      Baseline: 18 Oktober 2026, 23:17 WIB (<code>2026-10-18T16:17:23.455Z</code>) &nbsp;|&nbsp;
+      Post-Tugas 5: 19 Oktober 2026, 00:44 WIB (<code>2026-10-18T17:44:27.250Z</code>)
+    </li>
+  </ul>
+
+  <div class="callout">
+    <div class="callout-title">Catatan Komparabilitas Konfigurasi & Batasan Audit</div>
+    <p>
+      Pemeriksaan menyeluruh terhadap objek <code>configSettings</code> pada kedua berkas JSON membuktikan kesetaraan konfigurasi 100%. Sesuai aturan standar Lighthouse (<code>clearStorageTypes: ["service_workers", "cache_storage", ...]</code>), cache browser dibersihkan sebelum pengujian. Dengan demikian, audit mengukur kondisi <strong>kunjungan pertama (first-load)</strong> dan <strong>tidak mengukur secara langsung</strong> manfaat caching Service Worker pada kunjungan ulang atau mode offline. Indeks benchmark CPU mesin tercatat <strong>1589</strong> pada baseline dan <strong>1471</strong> pada pengujian terkini (selisih ~7,4% akibat fluktuasi beban sistem operasi lokal Windows).
+    </p>
+  </div>
+
+  <!-- Page Break to start Section 3 neatly on Page 2 -->
+  <div class="section-page-break"></div>
+
+  <!-- Section 3 -->
+  <h2>3. Hasil Pengujian dan Perbandingan Head-to-Head</h2>
+  <p>
+    Seluruh data berikut disarikan secara akurat dari berkas data asli <code>scratch/baseline-lighthouse.json</code> dan <code>scratch/post-5b-lighthouse.json</code>:
+  </p>
+
+  <h3>A. Skor Kategori Utama Lighthouse (Skala 0 – 100)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Kategori Audit</th>
+        <th class="center">Skor Baseline</th>
+        <th class="center">Skor Terkini (Post-5b)</th>
+        <th class="center">Selisih (Delta)</th>
+        <th>Status dan Evaluasi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Performance</strong></td>
+        <td class="center"><strong>100</strong> (raw: 1.0)</td>
+        <td class="center"><strong>99</strong> (raw: 0.99)</td>
+        <td class="center">-1 poin</td>
+        <td><span class="badge badge-green">Puncak (Zona Hijau)</span> Kinerja tetap optimal</td>
+      </tr>
+      <tr>
+        <td><strong>Accessibility</strong></td>
+        <td class="center"><strong>94</strong> (raw: 0.94)</td>
+        <td class="center"><strong>94</strong> (raw: 0.94)</td>
+        <td class="center">0 (Tetap)</td>
+        <td><span class="badge badge-green">Sangat Baik</span> Komponen baru menjaga standar a11y</td>
+      </tr>
+      <tr>
+        <td><strong>Best Practices</strong></td>
+        <td class="center"><strong>100</strong> (raw: 1.0)</td>
+        <td class="center"><strong>100</strong> (raw: 1.0)</td>
+        <td class="center">0 (Tetap)</td>
+        <td><span class="badge badge-green">Sempurna (100%)</span> Tanpa isu atau peringatan konsol</td>
+      </tr>
+      <tr>
+        <td><strong>SEO</strong></td>
+        <td class="center"><strong>82</strong> (raw: 0.82)</td>
+        <td class="center"><strong>91</strong> (raw: 0.91)</td>
+        <td class="center"><strong>+9 poin</strong></td>
+        <td><span class="badge badge-teal">Peningkatan Signifikan</span> Metadata PWA berhasil lolos audit</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>B. Core Web Vitals & Metrik Pemuatan Kunci</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Metrik Kunci</th>
+        <th class="center">Nilai Baseline (Tampilan | Riil)</th>
+        <th class="center">Nilai Terkini (Tampilan | Riil)</th>
+        <th class="center">Selisih Riil</th>
+        <th>Standar Rekomendasi Google</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>First Contentful Paint (FCP)</strong></td>
+        <td class="center">1,4 detik (1.374,1 ms)</td>
+        <td class="center"><strong>1,5 detik</strong> (1.453,2 ms)</td>
+        <td class="center">+79,1 ms</td>
+        <td><span class="badge badge-green">Baik (Good)</span> Ambang batas ≤ 1,8 detik</td>
+      </tr>
+      <tr>
+        <td><strong>Largest Contentful Paint (LCP)</strong></td>
+        <td class="center">1,4 detik (1.374,1 ms)</td>
+        <td class="center"><strong>1,6 detik</strong> (1.603,2 ms)</td>
+        <td class="center">+229,1 ms</td>
+        <td><span class="badge badge-green">Baik (Good)</span> Ambang batas ≤ 2,5 detik</td>
+      </tr>
+      <tr>
+        <td><strong>Total Blocking Time (TBT)</strong></td>
+        <td class="center">10 ms (7,0 ms)</td>
+        <td class="center"><strong>50 ms</strong> (54,5 ms)</td>
+        <td class="center">+47,5 ms (riil)</td>
+        <td><span class="badge badge-green">Baik (Good)</span> Ambang batas ≤ 200 ms</td>
+      </tr>
+      <tr>
+        <td><strong>Cumulative Layout Shift (CLS)</strong></td>
+        <td class="center"><strong>0</strong> (0,000)</td>
+        <td class="center"><strong>0</strong> (0,000)</td>
+        <td class="center">0,000</td>
+        <td><span class="badge badge-green">Sempurna</span> Nol pergeseran tata letak dinamis</td>
+      </tr>
+      <tr>
+        <td><strong>Speed Index (SI)</strong></td>
+        <td class="center">1,4 detik (1.374,1 ms)</td>
+        <td class="center"><strong>1,5 detik</strong> (1.453,2 ms)</td>
+        <td class="center">+79,1 ms</td>
+        <td><span class="badge badge-green">Baik (Good)</span> Ambang batas ≤ 3,4 detik</td>
+      </tr>
+      <tr>
+        <td><strong>Time to Interactive (TTI)</strong></td>
+        <td class="center">1,4 detik (1.409,3 ms)</td>
+        <td class="center"><strong>1,8 detik</strong> (1.760,6 ms)</td>
+        <td class="center">+351,3 ms</td>
+        <td><span class="badge badge-green">Baik (Good)</span> Ambang batas ≤ 3,8 detik</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="footer-note">
+    *Catatan Khusus TBT: Lighthouse membulatkan tampilan TBT ke kelipatan 10 ms terdekat (7,0 ms menjadi 10 ms; 54,5 ms menjadi 50 ms). Selisih tampilan tampak 40 ms (50-10), namun selisih nilai kalkulasi riil tanpa pembulatan adalah +47,5 ms (54,5 - 7,0). Keduanya disajikan agar tidak menimbulkan salah tafsir.
+  </div>
+
+  <h3>C. Verifikasi Ukuran Berkas Bundel (Bundle Size)</h3>
+  <p>
+    Pengukuran dipisahkan secara tegas antara ukuran berkas fisik hasil kompilasi dan ukuran transfer protokol jaringan HTTP:
+  </p>
+
+  <h4>1. Ukuran Berkas Hasil Build Produksi (dist/)</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Berkas Aset</th>
+        <th class="right">Raw Baseline</th>
+        <th class="right">Raw Terkini</th>
+        <th class="right">Selisih Raw</th>
+        <th>Ukuran Gzip Terkini (Metode Pengukuran)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>JavaScript (<code>dist/assets/*.js</code>)</strong></td>
+        <td class="right">259,46 kB</td>
+        <td class="right"><strong>262,04 kB</strong></td>
+        <td class="right">+2,59 kB</td>
+        <td><strong>82,49 kB</strong> (kompresi mandiri zlib)<br><strong>83,34 kB</strong> (pelaporan build Vite)</td>
+      </tr>
+      <tr>
+        <td><strong>CSS (<code>dist/assets/*.css</code>)</strong></td>
+        <td class="right">1,65 kB</td>
+        <td class="right"><strong>4,42 kB</strong></td>
+        <td class="right">+2,77 kB</td>
+        <td><strong>1,38 kB</strong> (kompresi mandiri zlib)<br><strong>1,39 kB</strong> (pelaporan build Vite)</td>
+      </tr>
+      <tr>
+        <td><strong>HTML (<code>dist/index.html</code>)</strong></td>
+        <td class="right">0,46 kB</td>
+        <td class="right"><strong>0,72 kB</strong></td>
+        <td class="right">+0,26 kB</td>
+        <td><strong>0,39 kB</strong> (kompresi mandiri zlib & Vite)</td>
+      </tr>
+      <tr style="background-color: #ecfdf5; font-weight: 700;">
+        <td><strong>Total Bundel JS + CSS</strong></td>
+        <td class="right"><strong>261,11 kB</strong></td>
+        <td class="right"><strong>266,46 kB</strong></td>
+        <td class="right"><strong>+5,35 kB (+2,05%)</strong></td>
+        <td><strong>83,88 kB</strong> (kompresi mandiri zlib)<br><strong>84,73 kB</strong> (pelaporan build Vite)</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="footer-note">
+    *Penjelasan Metode Pengukuran Gzip Terkini: Ukuran 82,49 kB untuk JS dan 1,38 kB untuk CSS (total 83,88 kB) diperoleh dari kompresi mandiri Node.js zlib pada berkas fisik di disk, sedangkan 83,34 kB untuk JS dan 1,39 kB untuk CSS (total 84,73 kB) dilaporkan langsung oleh konsol build Vite. Selisih kecil (~850 B) berasal dari perbedaan setelan level kompresi utilitas Vite terhadap kompresi mandiri fisik. Selisih gzip terhadap baseline tidak dihitung karena baseline gzip merupakan estimasi.
+  </div>
+
+  <h4>2. Ukuran Transfer Jaringan Protokol HTTP (Lighthouse network-requests)</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Permintaan Sumber Daya</th>
+        <th class="right">Transfer Baseline</th>
+        <th class="right">Transfer Terkini</th>
+        <th class="right">Selisih Transfer HTTP</th>
+        <th>Keterangan Kompresi & Header Respons</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Root Document (HTML)</strong></td>
+        <td class="right">710 B</td>
+        <td class="right">966 B</td>
+        <td class="right">+256 B</td>
+        <td>Body HTML mentah (460 B → 716 B) + Header HTTP (~250 B). Server preview lokal tidak meng-gzip dokumen HTML.</td>
+      </tr>
+      <tr>
+        <td><strong>Bundel JavaScript (<code>*.js</code>)</strong></td>
+        <td class="right">81.959 B (81,96 kB)</td>
+        <td class="right">82.921 B (82,92 kB)</td>
+        <td class="right">+962 B (+0,96 kB)</td>
+        <td>Payload JS terkompresi gzip + Header respons HTTP.</td>
+      </tr>
+      <tr>
+        <td><strong>Stylesheet CSS (<code>*.css</code>)</strong></td>
+        <td class="right">1.072 B (1,07 kB)</td>
+        <td class="right">1.747 B (1,75 kB)</td>
+        <td class="right">+675 B (+0,68 kB)</td>
+        <td>Payload CSS terkompresi gzip + Header respons HTTP.</td>
+      </tr>
+      <tr style="background-color: #ecfdf5; font-weight: 700;">
+        <td><strong>Total Wire Transfer JS + CSS</strong></td>
+        <td class="right"><strong>83.031 B (83,03 kB)</strong></td>
+        <td class="right"><strong>84.668 B (84,67 kB)</strong></td>
+        <td class="right"><strong>+1.637 B (+1,64 kB)</strong></td>
+        <td>Kenaikan transfer wire bersih protokol HTTP sebesar +1,97%.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="footer-note">
+    *Klarifikasi Transfer HTML: Transfer HTML tampak lebih besar dari ukuran mentahnya bukan karena kompresi gagal, melainkan karena server preview lokal mengirim dokumen HTML tanpa kompresi gzip ditambah header HTTP (~250 byte). Pada kompresi fisik mandiri (Vite), berkas HTML menciut menjadi 0,39 kB (393 B).
+  </div>
+
+  <!-- Page Break to start Section 4 & 5 neatly on Page 3 -->
+  <div class="section-page-break"></div>
+
+  <!-- Section 4 -->
+  <h2>4. Bukti Eksekusi Terminal Aktual</h2>
+  <p>
+    Berikut adalah bukti tangkapan layar terminal autentik saat proses kompilasi bundel produksi (<code>npm run build</code>) dijalankan pada mesin pengembang lokal, menampilkan output ukuran berkas fisik yang sesuai dengan tabel perbandingan:
+  </p>
+
+  <figure class="screenshot-figure">
+    <img src="screenshots/04-terminal-lint-build.png" alt="Tangkapan layar terminal build dan linting">
+    <figcaption class="screenshot-caption">Gambar 1. Bukti eksekusi terminal PowerShell menampilkan hasil build produksi Vite dan verifikasi ukuran aset dist/.</figcaption>
+  </figure>
+
+  <!-- Section 5 -->
+  <h2>5. Analisis Kritis Berbasis Bukti Audit</h2>
+
+  <h3>1. Peningkatan Signifikan Skor SEO (+9 Poin: 82 → 91)</h3>
+  <p>
+    Kenaikan skor SEO dibuktikan secara nyata oleh audit Lighthouse pada audit <code>meta-description</code>. Pada baseline awal, aplikasi belum memiliki tag deskripsi sehingga mendapat skor 0 (gagal). Pada implementasi Tugas 5a PWA, penambahan <code>&lt;meta name="description" content="Share.Bill - Split bills based on what everyone ordered." /&gt;</code> ke dalam berkas <code>index.html</code> menyebabkan audit ini berstatus lulus sempurna (skor 1). Skor belum mencapai 100 karena audit <code>robots-txt</code> bernilai 0 (server SPA Vite preview mengembalikan dokumen fallback <code>index.html</code> saat Lighthouse meminta <code>/robots.txt</code>).
+  </p>
+
+  <h3>2. Evaluasi Metrik Waktu & Total Blocking Time (TBT)</h3>
+  <p>
+    Dalam mengevaluasi perubahan skor Performance dari 100 ke 99 serta pergeseran TBT dari 7,0 ms (tampilan 10 ms) ke 54,5 ms (tampilan 50 ms), penting untuk membedakan antara fakta hasil pengamatan audit dengan hipotesis teknis penyebabnya:
+  </p>
+  
+  <h4>A. Fakta Hasil Pengamatan Audit (Audit Observations):</h4>
+  <ul>
+    <li>TBT terukur bergeser dari 7,0 ms ke 54,5 ms, namun tetap berada dalam batas rekomendasi aman Google (di bawah 200 ms).</li>
+    <li>Data rincian kerja thread utama (<em>mainthread-work-breakdown</em>) mencatat kenaikan durasi pada kategori <code>scriptEvaluation</code> (+105,8 ms, dari 90,4 ms ke 196,2 ms) dan <code>styleLayout</code> (+21,1 ms, dari 140,1 ms ke 161,2 ms).</li>
+    <li>Nilai indeks benchmark komputasi mesin lokal tercatat berbeda antara kedua pengujian (1589 pada baseline vs 1471 pada pengujian terkini, selisih ~7,4%).</li>
+    <li>Log audit jaringan menunjukkan tidak ada proses eksekusi thread <code>sw.js</code> selama audit navigasi karena seluruh storage dan service worker dibersihkan sebelum pengujian oleh setelan <code>clearStorageTypes</code>.</li>
+  </ul>
+
+  <h4>B. Dugaan / Hipotesis Teknis yang Masuk Akal (Technical Hypotheses):</h4>
+  <ul>
+    <li>Kenaikan waktu pada <code>scriptEvaluation</code> dan <code>styleLayout</code> menjadi indikasi yang ditemukan pada audit mengenai potensi beban komputasi tambahan. Namun, temuan ini <strong>tidak dapat dinyatakan sebagai bukti mutlak bahwa komponen Button, Card, atau CSS merupakan penyebab tunggal</strong>, mengingat adanya interaksi dinamis modul lain serta perbedaan lingkungan eksekusi.</li>
+    <li>Fluktuasi daya komputasi mesin lokal (tercermin dari indeks benchmark yang ~7,4% lebih rendah) berpotensi memengaruhi algoritma simulasi pelambatan CPU (Lantern) dalam memproyeksikan metrik waktu ke perangkat mobile.</li>
+    <li>Kenaikan TBT tidak dapat disimpulkan sebagai akibat dari Service Worker, karena tidak ditemukan jejak aktivitas Service Worker pada trace kerja thread utama selama audit berlangsung.</li>
+  </ul>
+
+  <h3>3. Kestabilan Tata Letak (Cumulative Layout Shift = 0)</h3>
+  <p>
+    Skor CLS tercatat <strong>0,000</strong> tanpa pergeseran. Hal ini membuktikan bahwa komponen <code>Card</code> dan <code>FormField</code> yang dibangun pada Tugas 5b memiliki struktur CSS yang solid dan tidak menimbulkan lonjakan visual dinamis saat elemen antarmuka selesai dimuat pada skenario pengujian ini.
+  </p>
+
+  <h3>4. Analisis Aksesibilitas (Skor 94 Tetap Konsisten)</h3>
+  <p>
+    Skor Accessibility secara keseluruhan berada pada angka <strong>94</strong> (skala 100), stabil sama persis dengan kondisi baseline awal. Berdasarkan laporan audit otomatis Lighthouse (axe-core) pada halaman Beranda, skor Accessibility tertahan di 94 bukan karena isu struktur semantik baru, melainkan karena masih adanya temuan rasio kontras warna (<em>color-contrast</em>, skor 0) sebesar <strong>3.76:1</strong> pada teks tombol utama hijau emerald <code>#059669</code> terhadap putih dan tautan navigasi aktif <code>.nav-link.active</code>, di mana standar WCAG AA merekomendasikan rasio minimal <strong>4.5:1</strong> untuk teks berukuran normal (14px).
+  </p>
+
+  <!-- Section 6: Page 4 -->
+  <div class="section-page-break"></div>
+
+  <h2>6. Ringkasan Evaluasi Dampak Teknis</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Tahapan Implementasi</th>
+        <th>Dampak yang Teramati</th>
+        <th>Beban Sumber Daya (Overhead)</th>
+        <th>Catatan Evaluasi Lingkup Uji</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>PWA (Tugas 5a)</strong></td>
+        <td>PWA installable, kelengkapan metadata web app, SEO meningkat +9 poin.</td>
+        <td>Penambahan metadata <code>manifest.json</code> dan HTML (+256 B).</td>
+        <td>Pengujian first-load memvalidasi metadata & manifest, namun <strong>belum mengukur langsung</strong> performa caching repeat-visit atau offline fallback.</td>
+      </tr>
+      <tr>
+        <td><strong>Component Library (Tugas 5b)</strong></td>
+        <td>Standarisasi antarmuka, aksesibilitas terstruktur, konsistensi form.</td>
+        <td>Bundel JS+CSS bertambah +5,35 kB raw (+1,64 kB transfer HTTP); TBT 50 ms.</td>
+        <td>Pertambahan ukuran terkendali pada skenario pengujian yang dilakukan.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Section 7 -->
+  <h2>7. Keterbatasan Metodologi Pengujian</h2>
+  <ol>
+    <li><strong>Skenario First-Load Saja:</strong> Pengujian otomatis Lighthouse secara default menghapus cache dan mematikan Service Worker aktif untuk mengevaluasi kondisi pengguna baru pertama kali. Pengujian ini tidak mencerminkan secara langsung kecepatan pembacaan cache Service Worker pada kunjungan ulang (<em>repeat visit</em>) maupun kesiapan fallback saat koneksi terputus total (<em>offline mode</em>).</li>
+    <li><strong>Variasi Lingkungan Mesin Lokal:</strong> Pengukuran dijalankan pada lingkungan mesin pengembang lokal (laptop Windows) dengan fluktuasi benchmark CPU (1589 vs 1471). Pengujian di lingkungan Continuous Integration (CI) berbasis cloud akan memberikan angka yang lebih konstan.</li>
+  </ol>
+
+  <!-- Section 8 -->
+  <h2>8. Rekomendasi Teknis Lanjutan</h2>
+  <ul>
+    <li><strong>Penyempurnaan SEO Menuju 100:</strong> Menambahkan berkas statis <code>public/robots.txt</code> sederhana dengan instruksi <code>User-agent: * Allow: /</code> agar server preview tidak mengembalikan dokumen HTML fallback.</li>
+    <li><strong>Penyempurnaan Aksesibilitas Menuju 100:</strong> Menyesuaikan tone warna teks primer menjadi <code>#047857</code> (Deep Emerald) yang memiliki rasio kontras > 4.5:1 terhadap latar putih untuk memenuhi seluruh kriteria WCAG AA.</li>
+  </ul>
+
+  <!-- Section 9 -->
+  <h2>9. Kesimpulan Akhir</h2>
+  <p>
+    Berdasarkan audit performa komparatif antara kondisi baseline awal dan kondisi terkini setelah pengerjaan Tugas 5a (PWA) dan Tugas 5b (Reusable Components) pada proyek <strong>Share.Bill</strong> oleh Kelompok <strong>QWERTY</strong>, dapat disimpulkan bahwa:
+  </p>
+  <ol>
+    <li><strong>Kinerja Aplikasi Berada pada Tingkat yang Stabil:</strong> Skor Performance tercatat pada level <strong>99</strong> dengan seluruh metrik Core Web Vitals (FCP 1,5 detik, LCP 1,6 detik, TBT 50 ms, CLS 0) berada di dalam ambang batas yang direkomendasikan Google pada skenario first-load yang diuji.</li>
+    <li><strong>Pertambahan Ukuran Berkas Terkendali:</strong> Penambahan tiga komponen antarmuka modular beserta stylesheet menghasilkan pertambahan ukuran transfer HTTP JS+CSS sebesar <strong>+1,64 kB</strong> (+1,97%) dan pertambahan ukuran raw sebesar <strong>+5,35 kB</strong> (+2,05%).</li>
+    <li><strong>Peningkatan SEO Terkonfirmasi:</strong> Penambahan metadata deskripsi PWA secara terukur meningkatkan skor SEO sebesar <strong>+9 poin</strong> (dari 82 menjadi 91).</li>
+    <li><strong>Stabilitas Tata Letak Terjaga:</strong> Cumulative Layout Shift bernilai <strong>0</strong> membuktikan tidak adanya pergeseran tata letak visual saat elemen dimuat pada sesi pengujian ini.</li>
+    <li><strong>Cakupan Pengujian Terbatas:</strong> Perlu dicatat bahwa evaluasi ini berfokus pada kondisi kunjungan awal (<em>first-load</em>) dan belum mengukur dampak efisiensi caching Service Worker saat kunjungan ulang maupun kondisi tanpa jaringan (<em>offline</em>).</li>
+  </ol>
+  <p style="margin-top: 6px; font-weight: 600; color: #064e3b;">
+    Dengan demikian, data pengujian yang diperoleh menunjukkan bahwa implementasi Tugas 5a dan Tugas 5b dapat diintegrasikan dengan penambahan beban sumber daya yang terkelola dengan baik dalam batasan pengujian yang telah dilakukan.
+  </p>
+
+</body>
+</html>

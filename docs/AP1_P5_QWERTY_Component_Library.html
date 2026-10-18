@@ -1,0 +1,905 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <title>Laporan AP1 Tugas 5b — Component Library: Share.Bill</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm 18mm 16mm;
+      @bottom-right {
+        content: counter(page);
+        font-size: 9pt;
+        color: #6b7280;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10pt;
+      line-height: 1.55;
+      color: #121826;
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+    }
+
+    /* Cover Page */
+    .cover {
+      page-break-after: always;
+      padding-top: 36px;
+      padding-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 85vh;
+    }
+
+    .cover-header {
+      border-bottom: 3px solid #059669;
+      padding-bottom: 22px;
+    }
+
+    .cover-course {
+      font-size: 12.5pt;
+      font-weight: 700;
+      color: #059669;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .cover-title {
+      font-size: 25pt;
+      font-weight: 800;
+      color: #121826;
+      line-height: 1.2;
+      margin: 0 0 12px;
+    }
+
+    .cover-subtitle {
+      font-size: 12.5pt;
+      color: #4b5563;
+      margin: 0;
+    }
+
+    .cover-meta-box {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 22px;
+      margin: 36px 0;
+    }
+
+    .cover-meta-grid {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      row-gap: 12px;
+      font-size: 10pt;
+    }
+
+    .meta-label {
+      font-weight: 700;
+      color: #374151;
+    }
+
+    .meta-value {
+      color: #121826;
+    }
+
+    .members-list {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .members-list li {
+      margin-bottom: 4px;
+    }
+
+    .repo-link {
+      color: #059669;
+      text-decoration: none;
+      font-family: monospace;
+      font-weight: 600;
+    }
+
+    .cover-footer {
+      border-top: 1px solid #e5e7eb;
+      padding-top: 16px;
+      font-size: 9pt;
+      color: #6b7280;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Headings */
+    h1 {
+      font-size: 14.5pt;
+      font-weight: 700;
+      color: #059669;
+      border-bottom: 1.5px solid #e5e7eb;
+      padding-bottom: 5px;
+      margin-top: 22px;
+      margin-bottom: 10px;
+      page-break-after: avoid;
+    }
+
+    h2 {
+      font-size: 11.5pt;
+      font-weight: 700;
+      color: #121826;
+      margin-top: 16px;
+      margin-bottom: 6px;
+      page-break-after: avoid;
+    }
+
+    h3 {
+      font-size: 10pt;
+      font-weight: 700;
+      color: #374151;
+      margin-top: 12px;
+      margin-bottom: 5px;
+      page-break-after: avoid;
+    }
+
+    p {
+      margin: 0 0 8px;
+      color: #374151;
+      text-align: justify;
+    }
+
+    ul, ol {
+      margin: 0 0 10px;
+      padding-left: 20px;
+      color: #374151;
+    }
+
+    li {
+      margin-bottom: 3px;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 14px;
+      font-size: 8.5pt;
+      page-break-inside: avoid;
+    }
+
+    th {
+      background: #059669;
+      color: #ffffff;
+      font-weight: 600;
+      text-align: left;
+      padding: 6px 9px;
+      border: 1px solid #059669;
+    }
+
+    td {
+      padding: 6px 9px;
+      border: 1px solid #e5e7eb;
+      color: #374151;
+      vertical-align: top;
+    }
+
+    tr:nth-child(even) {
+      background: #f9fafb;
+    }
+
+    /* Code Blocks */
+    pre {
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      border-left: 4px solid #059669;
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 8pt;
+      line-height: 1.4;
+      color: #1f2937;
+      overflow-x: auto;
+      margin: 8px 0 12px;
+      page-break-inside: avoid;
+    }
+
+    code {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 8.5pt;
+      background: #f3f4f6;
+      padding: 2px 4px;
+      border-radius: 4px;
+      color: #059669;
+      font-weight: 600;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+      font-weight: normal;
+    }
+
+    /* Badges & Callouts */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-size: 8pt;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .badge-success {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .alert-box {
+      background: #f0fdf4;
+      border-left: 4px solid #059669;
+      border-radius: 4px;
+      padding: 9px 12px;
+      margin: 10px 0;
+      font-size: 8.5pt;
+      page-break-inside: avoid;
+    }
+
+    .alert-warning {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      border-radius: 4px;
+      padding: 9px 12px;
+      margin: 10px 0;
+      font-size: 8.5pt;
+      page-break-inside: avoid;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+
+    /* Screenshots */
+    .screenshot-figure {
+      margin: 12px 0 16px;
+      text-align: center;
+      page-break-inside: avoid;
+    }
+
+    .screenshot-img {
+      max-width: 96%;
+      max-height: 250px;
+      object-fit: contain;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      display: inline-block;
+    }
+
+    .screenshot-img-terminal {
+      max-width: 96%;
+      max-height: 260px;
+      object-fit: contain;
+      border: 1px solid #333333;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      display: inline-block;
+    }
+
+    .screenshot-caption {
+      margin-top: 6px;
+      font-size: 8pt;
+      color: #6b7280;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COVER PAGE -->
+  <div class="cover">
+    <div class="cover-header">
+      <div class="cover-course">Application Project 1 (AP1) — Tugas 5b</div>
+      <h1 class="cover-title">Component Library Documentation</h1>
+      <p class="cover-subtitle">Standardisasi Komponen Antarmuka Reusable untuk Proyek Share.Bill</p>
+    </div>
+
+    <div class="cover-meta-box">
+      <div class="cover-meta-grid">
+        <div class="meta-label">Nama Proyek:</div>
+        <div class="meta-value"><strong>Share.Bill</strong></div>
+
+        <div class="meta-label">Jenis Aplikasi:</div>
+        <div class="meta-value">Aplikasi pembagian tagihan berdasarkan pesanan masing-masing orang</div>
+
+        <div class="meta-label">Kelompok:</div>
+        <div class="meta-value"><strong>QWERTY</strong></div>
+
+        <div class="meta-label">Anggota Kelompok:</div>
+        <div class="meta-value">
+          <ul class="members-list">
+            <li>Mukhamad Jibril Hidayatullah</li>
+            <li>Daffa Muhamad Ramadhan</li>
+            <li>Marchel Yohannes Sihombing</li>
+          </ul>
+        </div>
+
+        <div class="meta-label">Stack Teknologi:</div>
+        <div class="meta-value">React 19, TypeScript, Vite 8, React Router 8, Modular CSS</div>
+
+        <div class="meta-label">Repository GitHub:</div>
+        <div class="meta-value">
+          <a class="repo-link" href="https://github.com/Jibril061/Share.Bill">https://github.com/Jibril061/Share.Bill</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-footer">
+      <span>Semester 3 — Program Studi Informatika / Ilmu Komputer</span>
+      <span>Tahun Akademik 2026/2027</span>
+    </div>
+  </div>
+
+  <!-- SECTION 1 & 2 -->
+  <h1>1. Pendahuluan dan Tujuan</h1>
+  <p>
+    Pengembangan aplikasi berbasis web skala modern menuntut konsistensi visual, efisiensi penulisan kode, serta kemudahan dalam proses pemeliharaan berkelanjutan. Pada pengerjaan <strong>Tugas 5b Mata Kuliah Application Project 1 (AP1)</strong>, Kelompok QWERTY mengimplementasikan sistem <em>Component Library</em> yang berfokus pada pembangunan tiga komponen fondasi antarmuka: <strong>Button</strong>, <strong>Card</strong>, dan <strong>FormField</strong>.
+  </p>
+  <p>Tujuan utama dari pembuatan component library ini meliputi:</p>
+  <ul>
+    <li><strong>Konsistensi Desain Antarmuka:</strong> Menjamin seluruh halaman dalam aplikasi menggunakan ukuran, warna, radius border, dan spasi yang seragam.</li>
+    <li><strong>Prinsip Reusability & DRY (Don't Repeat Yourself):</strong> Mencegah duplikasi kode HTML dan deklarasi CSS yang berulang di setiap halaman.</li>
+    <li><strong>Aksesibilitas Terstandarisasi (WAI-ARIA):</strong> Mengintegrasikan relasi label, penanganan galat interaktif, teks bantuan, dan navigasi fokus keyboard secara native di dalam komponen.</li>
+    <li><strong>Keamanan Tipe Data (Type-Safety):</strong> Memanfaatkan TypeScript interface untuk memastikan setiap properti yang diteruskan ke komponen terdefinisi secara ketat dan mencegah kesalahan saat fase kompilasi.</li>
+  </ul>
+
+  <h1>2. Gambaran Singkat Aplikasi Share.Bill</h1>
+  <p>
+    <strong>Share.Bill</strong> adalah aplikasi <em>Single Page Application</em> (SPA) yang dirancang untuk mempermudah penghitungan pembagian tagihan (split bill) secara transparan dan adil berdasarkan rincian menu yang dipesan oleh setiap individu. 
+  </p>
+  <p>
+    Aplikasi ini dikembangkan dengan arsitektur modern berbasis <strong>React 19</strong>, <strong>TypeScript</strong>, <strong>Vite 8</strong>, dan <strong>React Router 8</strong>. Aplikasi memiliki alur navigasi client-side yang mencakup halaman Beranda (<code>/</code>), formulir pembuatan tagihan (<code>/create-bill</code>), serta penanganan rute tidak ditemukan (<code>*</code>). Seluruh komponen antarmuka yang dibangun dirancang agar terintegrasi secara modular pada halaman-halaman tersebut.
+  </p>
+
+  <div class="page-break"></div>
+
+  <!-- SECTION 3 -->
+  <h1>3. Prinsip Desain dan Konsistensi Style Guide</h1>
+
+  <div class="alert-warning">
+    <strong>Catatan Keterbukaan Style Guide Pertemuan 3:</strong><br>
+    Berdasarkan pemeriksaan menyeluruh terhadap seluruh berkas di repositori proyek, berkas dokumen fisik <em>Style Guide Pertemuan 3</em> tidak ditemukan secara mandiri. Oleh karena itu, kesesuaian komponen terhadap naskah asli Pertemuan 3 belum dapat diverifikasi secara tertulis dari dokumen fisik. Namun, implementasi komponen dibangun secara ketat mengacu pada token desain aktual yang telah diterapkan pada <code>src/App.css</code> dan <code>src/index.css</code>.
+  </div>
+
+  <p>
+    Sistem desain aktual yang menjadi acuan baku dalam perancangan komponen mencakup:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Token Desain</th>
+        <th style="width: 30%;">Nilai / Warna</th>
+        <th>Penerapan pada Komponen</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Primary Color</strong></td>
+        <td><code>#059669</code> (Emerald Green)</td>
+        <td>Latar tombol primary, border fokus input, warna teks brand header.</td>
+      </tr>
+      <tr>
+        <td><strong>Primary Hover</strong></td>
+        <td><code>#047857</code> (Deep Emerald)</td>
+        <td>Transisi hover pada elemen tombol utama (primary button).</td>
+      </tr>
+      <tr>
+        <td><strong>Neutral Dark</strong></td>
+        <td><code>#121826</code> (Ink Black)</td>
+        <td>Warna teks judul (H1, H2, judul kartu), teks label form, dan teks isi input.</td>
+      </tr>
+      <tr>
+        <td><strong>Neutral Muted</strong></td>
+        <td><code>#4b5563</code> & <code>#6b7280</code></td>
+        <td>Teks keterangan tubuh, teks bantuan form (helper text), subjudul kartu.</td>
+      </tr>
+      <tr>
+        <td><strong>Border Color</strong></td>
+        <td><code>#e5e7eb</code> & <code>#d1d5db</code></td>
+        <td>Bingkai pembatas kartu (12px radius) dan bingkai default input form (8px radius).</td>
+      </tr>
+      <tr>
+        <td><strong>Error Color</strong></td>
+        <td><code>#dc2626</code> (Crimson Red)</td>
+        <td>Bingkai input status error, teks pesan peringatan error validasi.</td>
+      </tr>
+      <tr>
+        <td><strong>Background</strong></td>
+        <td><code>#f9fafb</code> & <code>#ffffff</code></td>
+        <td>Latar aplikasi dasar (abu terang) dan latar permukaan komponen kartu/input.</td>
+      </tr>
+      <tr>
+        <td><strong>Tipografi</strong></td>
+        <td><code>Arial, Helvetica, sans-serif</code></td>
+        <td>Hirarki font terstandarisasi: Judul (20px bold), Tombol/Input (14px), Helper (13px).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SECTION 4: BUTTON -->
+  <h1>4. Dokumentasi Komponen Button</h1>
+  <p>
+    Berkas sumber: <code>src/components/Button.tsx</code> & <code>src/styles/components.css</code>.
+  </p>
+  <p>
+    Komponen <strong>Button</strong> dirancang untuk menangani seluruh aksi interaktif pengguna dengan dukungan variasi tema visual, variasi ukuran, lebar penuh, serta status nonaktif (*disabled*).
+  </p>
+
+  <h3>Spesifikasi Properti (Props)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Nama Prop</th>
+        <th>Tipe Data</th>
+        <th>Wajib/Opsional</th>
+        <th>Default</th>
+        <th>Keterangan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>variant</code></td>
+        <td><code>'primary' | 'secondary'</code></td>
+        <td>Opsional</td>
+        <td><code>'primary'</code></td>
+        <td>Menentukan varian visual (primary hijau atau secondary putih berbingkai).</td>
+      </tr>
+      <tr>
+        <td><code>size</code></td>
+        <td><code>'sm' | 'md' | 'lg'</code></td>
+        <td>Opsional</td>
+        <td><code>'md'</code></td>
+        <td>Menentukan padding dan ukuran font tombol.</td>
+      </tr>
+      <tr>
+        <td><code>fullWidth</code></td>
+        <td><code>boolean</code></td>
+        <td>Opsional</td>
+        <td><code>false</code></td>
+        <td>Mengubah lebar tombol menjadi 100% dari elemen pembungkus.</td>
+      </tr>
+      <tr>
+        <td><code>disabled</code></td>
+        <td><code>boolean</code></td>
+        <td>Opsional</td>
+        <td><code>false</code></td>
+        <td>Menonaktifkan interaksi, mengatur opacity 0.55, dan <code>aria-disabled="true"</code>.</td>
+      </tr>
+      <tr>
+        <td><code>type</code></td>
+        <td><code>'button' | 'submit' | 'reset'</code></td>
+        <td>Opsional</td>
+        <td><code>'button'</code></td>
+        <td>Atribut perilaku tombol HTML.</td>
+      </tr>
+      <tr>
+        <td><code>children</code></td>
+        <td><code>React.ReactNode</code></td>
+        <td><strong>Wajib</strong></td>
+        <td>-</td>
+        <td>Konten label teks atau elemen di dalam tombol.</td>
+      </tr>
+      <tr>
+        <td><code>...rest</code></td>
+        <td><code>ButtonHTMLAttributes</code></td>
+        <td>Opsional</td>
+        <td>-</td>
+        <td>Mendukung event handler standar seperti <code>onClick</code>, <code>id</code>, dan <code>title</code>.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Variasi dan State</h3>
+  <ul>
+    <li><strong>Primary:</strong> Background <code>#059669</code>, teks putih. Digunakan pada tombol aksi penting (misal <em>Buat Tagihan</em>).</li>
+    <li><strong>Secondary:</strong> Background <code>#ffffff</code>, border <code>#d1d5db</code>, teks <code>#374151</code>. Digunakan pada aksi penambahan data.</li>
+    <li><strong>State Disabled:</strong> Menerapkan <code>pointer-events: none</code>, opasitas <code>0.55</code>, kursor <code>not-allowed</code>, dan mencegah eksekusi fungsi <code>onClick</code>.</li>
+  </ul>
+
+  <h3>Contoh Kode Pemakaian</h3>
+<pre><code>import Button from '../components/Button'
+
+// Tombol Primary (Aksi Utama Navigasi)
+&lt;Button variant="primary" type="button"&gt;
+  Buat Tagihan
+&lt;/Button&gt;
+
+// Tombol Secondary (Aksi Pendukung)
+&lt;Button variant="secondary" type="button" onClick={handleAddMember}&gt;
+  + Tambah Anggota
+&lt;/Button&gt;
+
+// Tombol Status Disabled (Kalkulasi Belum Siap)
+&lt;Button variant="primary" disabled title="Lengkapi data terlebih dahulu"&gt;
+  Hitung Tagihan
+&lt;/Button&gt;</code></pre>
+
+  <p><strong>Batasan:</strong> Belum menyediakan animasi spinner otomatis untuk proses asynchronous (*loading state*).</p>
+
+  <div class="page-break"></div>
+
+  <!-- SECTION 5: CARD -->
+  <h1>5. Dokumentasi Komponen Card</h1>
+  <p>
+    Berkas sumber: <code>src/components/Card.tsx</code> & <code>src/styles/components.css</code>.
+  </p>
+  <p>
+    Komponen <strong>Card</strong> berfungsi sebagai kontainer semantik yang membungkus konten dalam satu kesatuan visual yang rapi, dilengkapi dengan header terstruktur untuk judul dan subjudul.
+  </p>
+
+  <h3>Spesifikasi Properti (Props)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Nama Prop</th>
+        <th>Tipe Data</th>
+        <th>Wajib/Opsional</th>
+        <th>Default</th>
+        <th>Keterangan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>title</code></td>
+        <td><code>React.ReactNode</code></td>
+        <td>Opsional</td>
+        <td><code>undefined</code></td>
+        <td>Judul kartu. Jika berupa string, otomatis dibungkus elemen <code>&lt;h2 class="card-title"&gt;</code>.</td>
+      </tr>
+      <tr>
+        <td><code>subtitle</code></td>
+        <td><code>React.ReactNode</code></td>
+        <td>Opsional</td>
+        <td><code>undefined</code></td>
+        <td>Teks keterangan penjelas di bawah judul kartu.</td>
+      </tr>
+      <tr>
+        <td><code>headerAction</code></td>
+        <td><code>React.ReactNode</code></td>
+        <td>Opsional</td>
+        <td><code>undefined</code></td>
+        <td>Slot tombol aksi di sudut kanan atas header kartu.</td>
+      </tr>
+      <tr>
+        <td><code>as</code></td>
+        <td><code>'section' | 'article' | 'div'</code></td>
+        <td>Opsional</td>
+        <td><code>'section'</code></td>
+        <td>Tag semantik HTML yang digunakan sebagai kontainer luar.</td>
+      </tr>
+      <tr>
+        <td><code>className</code></td>
+        <td><code>string</code></td>
+        <td>Opsional</td>
+        <td><code>''</code></td>
+        <td>Nama kelas CSS tambahan untuk kebutuhan styling khusus.</td>
+      </tr>
+      <tr>
+        <td><code>children</code></td>
+        <td><code>React.ReactNode</code></td>
+        <td><strong>Wajib</strong></td>
+        <td>-</td>
+        <td>Konten isi atau elemen tubuh kartu (card body).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Variasi dan Tata Letak</h3>
+  <ul>
+    <li><strong>Card Bertitel:</strong> Merender kartu dengan area header judul tegas bergaris pemisah visual lembut.</li>
+    <li><strong>Card Polos:</strong> Menampilkan pembungkus kartu berbingkai tanpa header jika <code>title</code> tidak disertakan.</li>
+    <li><strong>Responsivitas:</strong> Padding otomatis menciut dari 24px (desktop) menjadi 18px pada resolusi sempit (&le; 600px).</li>
+  </ul>
+
+  <h3>Contoh Kode Pemakaian</h3>
+<pre><code>import Card from '../components/Card'
+import Button from '../components/Button'
+
+&lt;Card title="Daftar Menu" subtitle="Tambahkan menu, harga, dan orang yang memesan"&gt;
+  &lt;p&gt;Daftar menu pesanan bersama akan tercantum di sini.&lt;/p&gt;
+  &lt;Button variant="secondary" type="button"&gt;
+    + Tambah Menu
+  &lt;/Button&gt;
+&lt;/Card&gt;</code></pre>
+
+  <p><strong>Batasan:</strong> Belum memiliki slot terstruktur mandiri untuk footer kartu (misal <code>Card.Footer</code>).</p>
+
+  <!-- SECTION 6: FORMFIELD -->
+  <h1>6. Dokumentasi Komponen FormField</h1>
+  <p>
+    Berkas sumber: <code>src/components/FormField.tsx</code> & <code>src/styles/components.css</code>.
+  </p>
+  <p>
+    Komponen <strong>FormField</strong> membungkus elemen input teks lengkap dengan label, indikator wajib (*required asterisk*), deskripsi bantuan (*helper text*), dan pesan galat (*error alert*). Komponen ini secara ketat mematuhi spesifikasi aksesibilitas web WAI-ARIA.
+  </p>
+
+  <h3>Spesifikasi Properti (Props)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Nama Prop</th>
+        <th>Tipe Data</th>
+        <th>Wajib/Opsional</th>
+        <th>Default</th>
+        <th>Keterangan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>label</code></td>
+        <td><code>string</code></td>
+        <td><strong>Wajib</strong></td>
+        <td>-</td>
+        <td>Teks label yang terhubung langsung ke input melalui <code>htmlFor={id}</code>.</td>
+      </tr>
+      <tr>
+        <td><code>id</code></td>
+        <td><code>string</code></td>
+        <td>Opsional</td>
+        <td><code>useId()</code></td>
+        <td>ID elemen input. Jika tidak diisi, dibuat otomatis via React <code>useId()</code>.</td>
+      </tr>
+      <tr>
+        <td><code>helperText</code></td>
+        <td><code>string</code></td>
+        <td>Opsional</td>
+        <td><code>undefined</code></td>
+        <td>Teks panduan abu-abu di bawah input, terhubung via <code>aria-describedby</code>.</td>
+      </tr>
+      <tr>
+        <td><code>error</code></td>
+        <td><code>string</code></td>
+        <td>Opsional</td>
+        <td><code>undefined</code></td>
+        <td>Pesan kesalahan merah dengan <code>role="alert"</code> dan pemicu bingkai merah.</td>
+      </tr>
+      <tr>
+        <td><code>required</code></td>
+        <td><code>boolean</code></td>
+        <td>Opsional</td>
+        <td><code>false</code></td>
+        <td>Menampilkan tanda bintang merah <code>*</code> dan atribut native <code>required</code>.</td>
+      </tr>
+      <tr>
+        <td><code>disabled</code></td>
+        <td><code>boolean</code></td>
+        <td>Opsional</td>
+        <td><code>false</code></td>
+        <td>Menonaktifkan input dan memberikan styling latar abu-abu redup.</td>
+      </tr>
+      <tr>
+        <td><code>labelSuffix</code></td>
+        <td><code>React.ReactNode</code></td>
+        <td>Opsional</td>
+        <td><code>undefined</code></td>
+        <td>Slot elemen tambahan di samping kanan label teks.</td>
+      </tr>
+      <tr>
+        <td><code>...inputProps</code></td>
+        <td><code>InputHTMLAttributes</code></td>
+        <td>Opsional</td>
+        <td>-</td>
+        <td>Mendukung <code>value</code>, <code>onChange</code>, <code>onBlur</code>, <code>placeholder</code>, dll.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Fitur Aksesibilitas (WAI-ARIA)</h3>
+  <ul>
+    <li><strong>Relasi Semantik:</strong> Tag <code>&lt;label&gt;</code> memiliki atribut <code>htmlFor</code> yang identik dengan atribut <code>id</code> pada tag <code>&lt;input&gt;</code>.</li>
+    <li><strong>Indikasi Kesalahan:</strong> Saat prop <code>error</code> terisi, input otomatis memperoleh atribut <code>aria-invalid="true"</code> dan <code>aria-describedby="{id}-error"</code>.</li>
+    <li><strong>Pengumuman Screen Reader:</strong> Elemen pesan kesalahan memiliki <code>role="alert"</code> agar langsung diumumkan kepada pengguna pembaca layar ketika validasi gagal.</li>
+    <li><strong>ForwardRef:</strong> Menggunakan <code>React.forwardRef</code> agar kompatibel dengan pengelolaan fokus DOM manual maupun form library.</li>
+  </ul>
+
+  <h3>Contoh Kode Pemakaian</h3>
+<pre><code>import { useState } from 'react'
+import FormField from '../components/FormField'
+
+function FormInputBill() {
+  const [name, setName] = useState('')
+  const [touched, setTouched] = useState(false)
+  const isError = touched && name.trim() === ''
+
+  return (
+    &lt;FormField
+      id="bill-name"
+      label="Nama tagihan"
+      placeholder="Contoh: Makan bersama"
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+      onBlur={() => setTouched(true)}
+      error={isError ? 'Nama tagihan wajib diisi.' : undefined}
+      helperText={!isError ? 'Beri nama untuk mengidentifikasi sesi tagihan ini.' : undefined}
+      required
+    /&gt;
+  )
+}</code></pre>
+
+  <p><strong>Batasan:</strong> Komponen ini dikhususkan untuk elemen <code>&lt;input&gt;</code>; belum mencakup input berjenis dropdown <code>&lt;select&gt;</code> atau <code>&lt;textarea&gt;</code>.</p>
+
+  <div class="page-break"></div>
+
+  <!-- SECTION 7: REAL IMPLEMENTATION WITH SCREENSHOTS -->
+  <h1>7. Penerapan Komponen pada Halaman Aplikasi</h1>
+  <p>
+    Ketiga komponen reusable telah diterapkan secara nyata pada alur Single Page Application Share.Bill tanpa merusak rute dan fitur PWA yang telah dibangun pada Tugas 5a:
+  </p>
+
+  <h3>7.1 Halaman Beranda (<code>src/pages/Home.tsx</code>)</h3>
+  <p>
+    Menggunakan komponen <code>&lt;Card&gt;</code> untuk membungkus deskripsi pengenalan aplikasi ("Split your bill, simply.") dan komponen <code>&lt;Button variant="primary"&gt;</code> yang dibungkus <code>Link</code> dari React Router untuk navigasi mulus ke rute <code>/create-bill</code>.
+  </p>
+  <div class="screenshot-figure">
+    <img src="screenshots/01-home.png" alt="Halaman Beranda Share.Bill" class="screenshot-img" />
+    <div class="screenshot-caption">Gambar 1. Tangkapan layar aktual Halaman Beranda (Home) dengan komponen Card dan Button varian primary.</div>
+  </div>
+
+  <h3>7.2 Halaman Buat Tagihan — Kondisi Normal (<code>src/pages/CreateBill.tsx</code>)</h3>
+  <p>
+    Mengorganisasikan seluruh formulir dalam 3 buah komponen <code>&lt;Card&gt;</code>: <em>Informasi Tagihan</em> (berisi <code>&lt;FormField&gt;</code> normal dengan helper text), <em>Anggota</em> (berisi <code>&lt;Button variant="secondary"&gt;</code>), dan <em>Daftar Menu</em> (berisi <code>&lt;Button variant="secondary"&gt;</code>).
+  </p>
+  <div class="screenshot-figure">
+    <img src="screenshots/02-create-bill-normal.png" alt="Halaman Buat Tagihan Normal" class="screenshot-img" />
+    <div class="screenshot-caption">Gambar 2. Tangkapan layar aktual Halaman Buat Tagihan dalam kondisi normal menampilkan Card, FormField, dan Button secondary.</div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <h3>7.3 Halaman Buat Tagihan — Kondisi Error dan Disabled</h3>
+  <p>
+    Ketika pengguna memfokuskan input "Nama tagihan" lalu meninggalkannya dalam keadaan kosong (event <em>onBlur</em>), <code>&lt;FormField&gt;</code> secara reaktif menampilkan bingkai merah dan teks galat <em>"Nama tagihan wajib diisi."</em> dengan <code>role="alert"</code>. Di bagian bawah, tombol <em>"Hitung Tagihan"</em> tampil dalam kondisi nonaktif (<strong>disabled</strong>, opasitas 0.55).
+  </p>
+  <div class="screenshot-figure">
+    <img src="screenshots/03-create-bill-error-disabled.png" alt="Halaman Buat Tagihan Error dan Disabled" class="screenshot-img" />
+    <div class="screenshot-caption">Gambar 3. Tangkapan layar aktual kondisi error pada FormField (bingkai merah & alert) dan Button disabled.</div>
+  </div>
+
+  <!-- SECTION 8: TESTING & TERMINAL SCREENSHOT -->
+  <h1>8. Ringkasan Pengujian Aktual</h1>
+  <p>
+    Pengujian dilakukan langsung pada server lokal (<code>http://localhost:4173/</code>) menggunakan browser Google Chrome secara otomatis dan terukur:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Item Pengujian</th>
+        <th style="width: 20%;">Perintah / Metode</th>
+        <th style="width: 40%;">Hasil Aktual</th>
+        <th style="width: 15%;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Linter Kode</strong></td>
+        <td><code>npm run lint</code></td>
+        <td>0 error, 0 warning dari ESLint. Sintaks 100% valid.</td>
+        <td><span class="badge badge-success">BERHASIL</span></td>
+      </tr>
+      <tr>
+        <td><strong>Kompilasi TypeScript</strong></td>
+        <td><code>npm run build</code></td>
+        <td>Build sukses dalam 393 ms tanpa galat tipe TypeScript.</td>
+        <td><span class="badge badge-success">BERHASIL</span></td>
+      </tr>
+      <tr>
+        <td><strong>Navigasi Rute SPA</strong></td>
+        <td>Klik tombol primary</td>
+        <td>Berpindah dari <code>/</code> ke <code>/create-bill</code> tanpa reload browser.</td>
+        <td><span class="badge badge-success">BERHASIL</span></td>
+      </tr>
+      <tr>
+        <td><strong>Validasi FormField</strong></td>
+        <td>Focus lalu blur input</td>
+        <td>Input kosong berubah berbingkai merah, muncul pesan error <code>role="alert"</code>, dan <code>aria-invalid="true"</code>.</td>
+        <td><span class="badge badge-success">BERHASIL</span></td>
+      </tr>
+      <tr>
+        <td><strong>State Button Disabled</strong></td>
+        <td>Event click dispatch</td>
+        <td>Klik dibatalkan (<code>clickTriggered: false</code>), opasitas 0.55.</td>
+        <td><span class="badge badge-success">BERHASIL</span></td>
+      </tr>
+      <tr>
+        <td><strong>Layout Desktop (1200px)</strong></td>
+        <td>Emulasi viewport CDP</td>
+        <td>Konten terpusat dengan lebar 960px, tanpa overflow horizontal.</td>
+        <td><span class="badge badge-success">BERHASIL</span></td>
+      </tr>
+      <tr>
+        <td><strong>Layout Mobile (375px)</strong></td>
+        <td>Emulasi viewport CDP</td>
+        <td>Konten menciut rapi (343px), padding kartu otomatis 18px.</td>
+        <td><span class="badge badge-success">BERHASIL</span></td>
+      </tr>
+      <tr>
+        <td><strong>Integritas PWA (Tugas 5a)</strong></td>
+        <td>Pengecekan aset build</td>
+        <td><code>manifest.json</code>, <code>sw.js</code>, <code>offline.html</code>, dan 4 ikon PNG tetap utuh dan aktif.</td>
+        <td><span class="badge badge-success">BERHASIL</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>8.1 Bukti Eksekusi Terminal (Linting dan Build)</h3>
+  <div class="screenshot-figure">
+    <img src="screenshots/04-terminal-lint-build.png" alt="Hasil Eksekusi Terminal" class="screenshot-img-terminal" />
+    <div class="screenshot-caption">Gambar 4. Tangkapan layar terminal PowerShell saat mengeksekusi npm run lint dan npm run build tanpa error.</div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- SECTION 9, 10, 11 -->
+  <h1>9. Batasan Implementasi</h1>
+  <ul>
+    <li><strong>Cakupan Elemen Input:</strong> Komponen <code>FormField</code> difokuskan untuk input teks biasa; belum mendukung format mata uang otomatis (masking <code>Rp</code>) maupun kontrol dropdown <code>&lt;select&gt;</code>.</li>
+    <li><strong>State Dinamis Tagihan:</strong> Tombol tambah anggota dan menu saat ini masih berstatus skeleton tampilan, belum terhubung ke manajemen state daftar pesanan dinamis.</li>
+    <li><strong>Loading Spinner:</strong> Komponen tombol belum memiliki varian animasi loading saat pemrosesan asynchronous.</li>
+  </ul>
+
+  <h1>10. Kesimpulan</h1>
+  <p>
+    Pengerjaan <strong>Tugas 5b: Component Library</strong> pada proyek <strong>Share.Bill</strong> oleh <strong>Kelompok QWERTY</strong> telah berhasil diselesaikan secara utuh:
+  </p>
+  <ol>
+    <li>Tiga komponen reusable (<strong>Button</strong>, <strong>Card</strong>, dan <strong>FormField</strong>) telah dibangun menggunakan React 19 dan TypeScript dengan properti yang bertipe ketat.</li>
+    <li>Komponen mematuhi prinsip aksesibilitas web WAI-ARIA dan telah terintegrasi secara fungsional pada halaman <code>Home.tsx</code> dan <code>CreateBill.tsx</code>.</li>
+    <li>Seluruh pengujian teknis (linting, kompilasi produksi, navigasi, dan uji responsivitas) menunjukkan hasil yang 100% bebas dari galat.</li>
+  </ol>
+
+  <h1>11. Dokumentasi Bukti Screenshot Aktual</h1>
+  <p>
+    Sesuai instruksi laporan resmi, seluruh tangkapan layar telah diambil langsung dari instans aplikasi lokal dan terminal tanpa ilustrasi palsu atau manipulasi hasil uji. Rincian berkas bukti tangkapan layar yang tersimpan pada folder <code>docs/screenshots/</code> adalah sebagai berikut:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%;">Nomor</th>
+        <th style="width: 35%;">Nama Berkas</th>
+        <th style="width: 50%;">Deskripsi Kondisi yang Ditampilkan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Gambar 1</strong></td>
+        <td><code>docs/screenshots/01-home.png</code></td>
+        <td>Halaman Beranda (Home): Menampilkan kontainer Card dan Button primary "Buat Tagihan".</td>
+      </tr>
+      <tr>
+        <td><strong>Gambar 2</strong></td>
+        <td><code>docs/screenshots/02-create-bill-normal.png</code></td>
+        <td>Halaman Buat Tagihan (Kondisi Normal): Menampilkan 3 buah Card, FormField dengan helper text, dan Button secondary.</td>
+      </tr>
+      <tr>
+        <td><strong>Gambar 3</strong></td>
+        <td><code>docs/screenshots/03-create-bill-error-disabled.png</code></td>
+        <td>Halaman Buat Tagihan (Error & Disabled): Input dengan bingkai merah & alert error, serta Button disabled.</td>
+      </tr>
+      <tr>
+        <td><strong>Gambar 4</strong></td>
+        <td><code>docs/screenshots/04-terminal-lint-build.png</code></td>
+        <td>Terminal PowerShell: Menampilkan eksekusi riil <code>npm run lint</code> (0 error) dan <code>npm run build</code> (exit code 0).</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
