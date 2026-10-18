@@ -1,0 +1,241 @@
+/* ==========================================================================
+   Share.Bill - Reusable Component Styles (Tugas 5b)
+   Consistent with Share.Bill design system:
+   Primary: #059669 (Emerald Green), Dark: #121826, Gray: #4b5563 / #e5e7eb
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Button Component (.btn)
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 10px 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+/* Primary Variant */
+.btn-primary {
+  background-color: #059669;
+  color: #ffffff;
+  border-color: #059669;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #047857;
+  border-color: #047857;
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid #059669;
+  outline-offset: 2px;
+}
+
+/* Secondary Variant */
+.btn-secondary {
+  background-color: #ffffff;
+  color: #374151;
+  border-color: #d1d5db;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: #f3f4f6;
+  color: #111827;
+  border-color: #9ca3af;
+}
+
+.btn-secondary:focus-visible {
+  outline: 2px solid #9ca3af;
+  outline-offset: 2px;
+}
+
+/* Sizes */
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 6px;
+}
+
+.btn-md {
+  padding: 10px 16px;
+  font-size: 14px;
+}
+
+.btn-lg {
+  padding: 12px 20px;
+  font-size: 16px;
+}
+
+.btn-full-width {
+  width: 100%;
+}
+
+/* Disabled State */
+.btn:disabled,
+.btn[aria-disabled='true'] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+/* --------------------------------------------------------------------------
+   2. Card Component (.card)
+   -------------------------------------------------------------------------- */
+.card {
+  margin-top: 28px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease;
+}
+
+.card-header {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.card-title-group {
+  flex: 1;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  color: #121826;
+}
+
+.card-subtitle {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.card-action {
+  flex-shrink: 0;
+}
+
+.card-body {
+  width: 100%;
+}
+
+.card-body > :first-child {
+  margin-top: 0;
+}
+
+.card-body > :last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 18px;
+    margin-top: 20px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. FormField Component (.form-field)
+   -------------------------------------------------------------------------- */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 420px;
+  margin-top: 8px;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #121826;
+  margin-bottom: 6px;
+}
+
+.form-required {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.form-input {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 14px;
+  color: #121826;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-input::placeholder {
+  color: #9ca3af;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #059669;
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+}
+
+/* Error State */
+.form-field.has-error .form-input {
+  border-color: #dc2626;
+}
+
+.form-field.has-error .form-input:focus {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+}
+
+.form-error {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #dc2626;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* Helper Text */
+.form-helper {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+/* Disabled State */
+.form-field.is-disabled {
+  opacity: 0.6;
+}
+
+.form-field.is-disabled .form-input {
+  background-color: #f3f4f6;
+  cursor: not-allowed;
+}
